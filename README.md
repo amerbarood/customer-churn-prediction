@@ -65,19 +65,31 @@ The data includes age, gender, region and a customer ID, which raises questions 
 ## Repository structure
 
 ```
-├── notebooks/
-│   └── churn_analysis_and_prediction.ipynb   # EDA, cleaning, pipeline, tuning, evaluation
+├── main.py                       # command-line entry point
+├── churn/
+│   ├── data.py                   # loading, cleaning, column groups, IQR fences
+│   ├── transformers.py           # OutlierTrans, MakeOrdinal, ReplaceVals
+│   ├── model.py                  # pipeline, decision tree, randomized search, evaluation
+│   └── eda.py                    # summary tables and figures
+├── tests/                        # pytest smoke tests
 ├── data/
-│   └── churn.csv                             # dataset (Kaggle)
-└── assets/                                   # figures used in this README
+│   └── churn.csv                 # dataset (Kaggle)
+└── assets/                       # figures used in this README
 ```
 
-## Running it
+## Running it (VS Code / Python)
 
 ```bash
-pip install pandas numpy scikit-learn plotly seaborn matplotlib scipy pyarrow jupyter
-jupyter notebook notebooks/churn_analysis_and_prediction.ipynb
+python -m venv .venv
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+
+python main.py eda                # tables in the console, figures in outputs/eda/
+python main.py train              # baseline + tuned tree, confusion matrix, saves models/churn_tree.joblib
+python main.py predict --input data/churn.csv --output outputs/predictions.csv
 ```
+
+In VS Code, open the folder, select the `.venv` interpreter and use the **Run and Debug** panel (`.vscode/launch.json` has a configuration for each command). `pytest` runs the smoke tests.
 
 ## Team
 
