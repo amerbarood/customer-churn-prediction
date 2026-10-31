@@ -72,8 +72,6 @@ The data includes age, gender, region and a customer ID, which raises questions 
 │   ├── model.py                  # pipeline, decision tree, randomized search, evaluation
 │   └── eda.py                    # summary tables and figures
 ├── tests/                        # pytest smoke tests
-├── notebooks/
-│   └── churn_analysis_and_prediction.ipynb   # original notebook (interactive Plotly EDA)
 ├── data/
 │   └── churn.csv                 # dataset (Kaggle)
 └── assets/                       # figures used in this README

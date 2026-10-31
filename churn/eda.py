@@ -1,7 +1,6 @@
 """Exploratory analysis: summary tables printed to the console, figures saved to outputs/eda/.
 
-The original notebook's interactive Plotly charts are kept in notebooks/; this
-module reproduces the core analysis as static figures.
+Reproduces the project's exploratory analysis as static figures.
 """
 
 from __future__ import annotations
